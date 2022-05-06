@@ -1,6 +1,7 @@
 import { DataTypes, Model, Sequelize } from "sequelize/types";
 import { SaleDataI } from "../../../src/domain/domain";
 import db from '.';
+import User from "./User";
 
 
 export default class Sale extends Model implements SaleDataI {
@@ -51,3 +52,6 @@ Sale.init({
   modelName: 'sale',
   tableName: 'sales',
 })
+
+User.hasMany(Sale, { foreignKey: 'user_id', as: 'user_sale' });
+Sale.belongsTo(User, { foreignKey: 'user_id', as: 'user_sale' });
