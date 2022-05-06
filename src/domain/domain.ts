@@ -18,3 +18,9 @@ export interface SaleDataI extends Indexable {
   saleDate: Date,
   status: string,
 }
+
+export interface ProductI extends Indexable {
+  name: string,
+  price: number,
+  urlImage: string,
+}
