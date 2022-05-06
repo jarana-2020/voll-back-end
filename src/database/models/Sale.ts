@@ -1,4 +1,4 @@
-import { DataTypes, Model, Sequelize } from "sequelize/types";
+import { DataTypes, Model, Sequelize } from "sequelize";
 import { SaleDataI } from "../../../src/domain/domain";
 import db from '.';
 import User from "./User";
