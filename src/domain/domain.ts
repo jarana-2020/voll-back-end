@@ -24,3 +24,9 @@ export interface ProductI extends Indexable {
   price: number,
   urlImage: string,
 }
+
+export interface SalesProductI {
+  saleId: number,
+  productId: number,
+  quantity: number
+}
