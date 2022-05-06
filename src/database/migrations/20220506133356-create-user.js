@@ -25,6 +25,11 @@ module.exports = {
         type: Sequelize.STRING,
       },
 
+      coins: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+
       role: {
         allowNull: false,
         type: Sequelize.STRING,

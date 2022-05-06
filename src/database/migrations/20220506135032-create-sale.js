@@ -32,7 +32,12 @@ module.exports = {
         allowNull: false,
         field: 'sale_date',
         type: Sequelize.DATE,
-      }
+      },
+
+      status: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       
     });
   },
