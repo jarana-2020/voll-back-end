@@ -4,7 +4,8 @@
   "description": "Teste Tecnico Voll Sollutions",
   "main": "./build/src/api/server",
   "scripts": {
-    "start": "node .",
+    "start": "npm run build && node ./build/api/server.js",
+    "build": "tsc",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "dev": "ts-node ./src/api/server.ts",
     "lint": "eslint ./src --ext .ts",
