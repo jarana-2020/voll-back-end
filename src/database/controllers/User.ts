@@ -28,7 +28,7 @@ class UserController {
     try {
       const { email, password } = req.params;
       const user = await UserService.userLogin(email, password);
-      const { error: { message } }= user as ErrorService
+      const { message }= user as ErrorService
 
       if(message) return res.status(404).json(message);
       

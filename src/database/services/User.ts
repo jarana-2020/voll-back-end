@@ -34,11 +34,11 @@ class UserService {
       where: { email: userEmail }
     })
     
-    if(!user) return { error: { message: 'User Not Found'}}
+    if(!user) return { message: 'User Not Found' }
 
     const { password } = user;
 
-    if(password !== hash) return { error: { message: 'Invalid Password'}}
+    if(password !== hash) return {  message: 'Invalid Password'  }
 
     return user;
   }

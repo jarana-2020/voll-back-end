@@ -1,10 +1,12 @@
 import * as express from 'express';
+import ValidateUser from '../../src/database/middlewares/User/userValidate';
 import UserController from '../../src/database/controllers/User';
 
 const UserRouter = express.Router();
 
 UserRouter
   .get('/', UserController.searchUser)
-  .post('/login',UserController.loginUser)
+  .use(ValidateUser.validateLogin)
+  .post('/login', UserController.loginUser)
 
 export default UserRouter;

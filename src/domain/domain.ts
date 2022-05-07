@@ -32,5 +32,5 @@ export interface SalesProductI {
 }
 
 export type ErrorService = {
-  error: { message: string }
+   message: string 
 }
