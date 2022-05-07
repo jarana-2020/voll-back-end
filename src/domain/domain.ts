@@ -12,6 +12,13 @@ export interface UserDataI extends Indexable  {
   role: string,
 }
 
+export interface UserCreatedI extends Indexable {
+  name: string,
+  email: string,
+  coins: number,
+  role: string,
+}
+
 export interface SaleDataI extends Indexable {
   userId: number,
   totalCoins: number,

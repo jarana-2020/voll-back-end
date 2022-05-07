@@ -23,4 +23,14 @@ export default class ValidateUser {
     next();
 
   }
+
+  static validateUserFields (req: Request, res: Response, next: NextFunction) {
+    const { name } = req.body;
+
+    if(!name) {
+      return res.status(401).json({ message: 'All fields must be filled'})
+    }
+
+    next();
+  }
 }

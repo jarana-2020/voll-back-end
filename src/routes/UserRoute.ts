@@ -8,5 +8,7 @@ UserRouter
   .get('/', UserController.searchUser)
   .use(ValidateUser.validateLogin)
   .post('/login', UserController.loginUser)
+  .use(ValidateUser.validateUserFields)
+  .post('/', UserController.addUser)
 
 export default UserRouter;

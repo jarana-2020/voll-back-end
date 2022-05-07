@@ -8,23 +8,34 @@ const key = fs.readFileSync('./jwt.evaluation.key', 'utf-8');
 
 class UserController {
 
-  static async searchUser(req: Request, res: Response) {
+  static async addUser (req: Request, res: Response) {
+    try {
+      const { body }  = req;
+      const user = await UserService.addUser(body);
+      return res.status(201).json(user);
+
+    } catch (error) {
+      return res.status(500).json({ message: 'Internal Server Error '});
+    }
+  }
+
+  static async searchUser (req: Request, res: Response) {
     try {
       const { search } = req.query;
       const users = await UserService.getUsers(search as string);
       return res.status(200).json(users);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({ message: 'Internal Server Error '});
     }
   }
 
-  static generateToken(user: UserDataI) {
+  static generateToken (user: UserDataI) {
     const { id, name, email, role } = user;
     const token = sign({ id, name, email, role }, key);
     return token;
   }
 
-  static async loginUser(req: Request, res: Response) {
+  static async loginUser (req: Request, res: Response) {
     try {
       const { email, password } = req.params;
       const user = await UserService.userLogin(email, password);
@@ -35,7 +46,7 @@ class UserController {
       const token = this.generateToken(user as UserDataI)
       return { ...user, token }
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({ message: 'Internal Server Error '});
     }
   }
 }
