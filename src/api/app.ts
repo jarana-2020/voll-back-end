@@ -1,5 +1,7 @@
 import * as express from 'express';
 import * as cors from 'cors';
+import UserRouter from '../../src/routes/UserRoute';
+
 
 class App {
   public app: express.Express;
@@ -20,6 +22,7 @@ class App {
     this.app.use(accessControl);
     this.app.use(express.json());
     this.app.use(cors());
+    this.app.use('/users', UserRouter )
   }
 
   public start(PORT: string | number): void {
@@ -30,3 +33,5 @@ class App {
 }
 
 export { App }
+
+export const { app } = new App();
