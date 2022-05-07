@@ -9,7 +9,7 @@
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "dev": "ts-node ./src/api/server.ts",
     "lint": "eslint ./src --ext .ts",
-    "test": "mocha -r ts-node/register src/tests/**/*.test.ts --exit -t 60000"
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/tests/**/*.ts'"
   },
   "author": "Julio Cesar Arana",
   "license": "ISC",
