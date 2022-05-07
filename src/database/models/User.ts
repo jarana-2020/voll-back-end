@@ -9,7 +9,7 @@ export default class User extends Model implements UserDataI {
 
   email: string;
 
-  passsword: string;
+  password: string;
 
   coins: number;
 

@@ -7,7 +7,7 @@ export type Indexable = {
 export interface UserDataI extends Indexable  {
   name: string,
   email: string,
-  passsword: string,
+  password: string,
   coins: number,
   role: string,
 }
@@ -29,4 +29,8 @@ export interface SalesProductI {
   saleId: number,
   productId: number,
   quantity: number
+}
+
+export type ErrorService = {
+  error: { message: string }
 }
