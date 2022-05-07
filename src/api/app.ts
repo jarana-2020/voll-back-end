@@ -22,7 +22,7 @@ class App {
     this.app.use(accessControl);
     this.app.use(express.json());
     this.app.use(cors());
-    this.app.use('/users', UserRouter )
+    this.app.use('/user', UserRouter )
   }
 
   public start(PORT: string | number): void {

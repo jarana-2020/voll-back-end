@@ -1,11 +1,13 @@
 import User from "../models/User";
 import { Op } from 'sequelize';
+import md5 = require("md5");
+import { ErrorService } from "../../../src/domain/domain";
 
 
 class UserService {
   
   static async getUsers (value: string): Promise<User[]> {
-    const result = await User.findAll({
+    const users = await User.findAll({
       where : {
         [Op.or] : [
           {
@@ -22,8 +24,23 @@ class UserService {
       }
     });
 
-    return result;
+    return users;
     
+  }
+
+  static async userLogin( userEmail: string, userPassword: string): Promise<User | ErrorService > {
+    const hash = md5(userPassword);
+    const user = await User.findOne({
+      where: { email: userEmail }
+    })
+    
+    if(!user) return { error: { message: 'User Not Found'}}
+
+    const { password } = user;
+
+    if(password !== hash) return { error: { message: 'Invalid Password'}}
+
+    return user;
   }
 }
 
