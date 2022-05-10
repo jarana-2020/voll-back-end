@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { ErrorService, UserDataI } from '../../../src/domain/domain';
+import { ErrorService, UserCreatedI, UserDataI } from '../../../src/domain/domain';
 import UserService from '../services/User';
 import { sign } from 'jsonwebtoken';
 import * as fs from 'fs';
 
-const key = fs.readFileSync('./jwt.evaluation.key', 'utf-8');
+const key = fs.readFileSync('jwt.evation.key', 'utf-8');
 
 class UserController {
 
@@ -37,14 +37,19 @@ class UserController {
 
   static async loginUser (req: Request, res: Response) {
     try {
-      const { email, password } = req.params;
+      const { email, password } = req.body;
+      
       const user = await UserService.userLogin(email, password);
+      
       const { message }= user as ErrorService
 
       if(message) return res.status(404).json(message);
+
+      const { id, name, role } = user as UserCreatedI;
       
-      const token = this.generateToken(user as UserDataI)
-      return { ...user, token }
+      const token = sign({ id, name, email, role }, key);
+      
+      return res.status(200).json({ ...user, token }) 
     } catch (error) {
       return res.status(500).json({ message: 'Internal Server Error '});
     }

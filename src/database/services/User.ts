@@ -15,6 +15,7 @@ class UserService {
   }
   
   static async getUsers (value: string): Promise<User[]> {
+    
     const users = await User.findAll({
       where : {
         [Op.or] : [

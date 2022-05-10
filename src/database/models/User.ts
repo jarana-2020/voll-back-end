@@ -36,10 +36,12 @@ User.init({
   },
   role: {
     allowNull: false,
+    defaultValue: 'user',
     type: DataTypes.STRING,
   },
   coins: {
     allowNull: false,
+    defaultValue: 0,
     type: DataTypes.INTEGER,
   },
 }, {
