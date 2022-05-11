@@ -41,3 +41,9 @@ export interface SalesProductI {
 export type ErrorService = {
    message: string 
 }
+
+export interface ProductI  {
+  name: string,
+  price: number,
+  urlImage: string,
+}
