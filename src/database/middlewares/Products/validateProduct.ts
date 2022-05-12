@@ -7,7 +7,7 @@ const key = fs.readFileSync('jwt.evation.key', 'utf-8');
 export default class ValidateProduct {
   static validateProduct(req: Request, res: Response, next: NextFunction) {
    try {
-    const { authorization } = req.params;
+    const { authorization } = req.headers;
     const { name, price } = req.body;
 
     if(!name || !price) {
