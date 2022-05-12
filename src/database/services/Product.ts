@@ -4,14 +4,15 @@ import Product from "../models/Product";
 
 class ProductService {
 
-  static async addProduct(dataProduct: ProductI):Promise<Product> {
-    const { name, price, urlImage } = dataProduct;
-    const product = await Product.create({
+  static async addProduct(dataProduct: ProductI):Promise<unknown> {
+    const { name, price: cost, urlImage } = dataProduct;
+    
+      const product = await Product.create({
       name,
-      price,
-      urlImage,
+      price: Number(cost),
+      urlImage: `http://localhost:3001/public/${urlImage}`
     })
-    return product;
+      return product;
   }
 }
 

@@ -29,7 +29,7 @@ export interface SaleDataI extends Indexable {
 export interface ProductI extends Indexable {
   name: string,
   price: number,
-  urlImage: File,
+  urlImage: string,
 }
 
 export interface SalesProductI {
