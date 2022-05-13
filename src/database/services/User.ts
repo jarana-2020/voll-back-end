@@ -58,14 +58,15 @@ class UserService {
   }
 
   static async editUser(
-    id: number
+    id: number,
+    coins: number,
     ): Promise<[affectedCount: number] | ErrorService> {
       
     const isUserExists = await User.findByPk(id)
     if(! isUserExists) {
       return { message: 'User Not Found'}
     }
-    const user = await User.update({ id },
+    const user = await User.update({ coins },
       {
         where: {
           id,
