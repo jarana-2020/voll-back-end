@@ -37,7 +37,11 @@ class UserService {
     
   }
 
-  static async userLogin( userEmail: string, userPassword: string): Promise<UserCreatedI | ErrorService > {
+  static async userLogin( 
+    userEmail: string, 
+    userPassword: string
+    ): Promise<UserCreatedI | ErrorService > {
+
     const hash = md5(userPassword);
     const user = await User.findOne({
       where: { email: userEmail }
@@ -51,6 +55,23 @@ class UserService {
     const { id, name, email, role, coins } = user;
 
     return { id, name, email, role, coins };
+  }
+
+  static async editUser(
+    id: number
+    ): Promise<[affectedCount: number] | ErrorService> {
+      
+    const isUserExists = await User.findByPk(id)
+    if(! isUserExists) {
+      return { message: 'User Not Found'}
+    }
+    const user = await User.update({ id },
+      {
+        where: {
+          id,
+        }
+      })
+    return user
   }
 }
 
