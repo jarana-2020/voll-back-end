@@ -54,6 +54,24 @@ class UserController {
       return res.status(500).json({ message: 'Internal Server Error '});
     }
   }
+
+  static async editUser (req: Request, res: Response) {
+    try {
+      const {id} = req.body;
+
+      const user = await UserService.editUser(Number(id));
+
+      const { message }= user as ErrorService
+
+      if(message) return res.status(404).json(message);
+
+      return res.status(200).json(user)
+
+    } catch (error) {
+      
+      return res.status(500).json({ message: 'Internal Server Error '});
+    }
+  }
 }
 
 export default UserController;
