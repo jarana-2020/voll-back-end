@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as cors from 'cors';
 import UserRouter from '../../src/routes/UserRoute';
 import ProductRouter from '../../src/routes/ProductRoute';
+import * as path from 'path';
 
 
 class App {
@@ -23,7 +24,7 @@ class App {
     this.app.use(accessControl);
     this.app.use(express.json());
     this.app.use(cors());
-    this.app.use(express.static(__dirname + '/public'));
+    this.app.use(express.static(path.resolve('public')));
     this.app.use('/user', UserRouter )
     this.app.use('/products', ProductRouter)
   }
