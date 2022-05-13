@@ -57,9 +57,9 @@ class UserController {
 
   static async editUser (req: Request, res: Response) {
     try {
-      const {id} = req.body;
+      const {id, coins } = req.body;
 
-      const user = await UserService.editUser(Number(id));
+      const user = await UserService.editUser(Number(id), coins);
 
       const { message }= user as ErrorService
 
