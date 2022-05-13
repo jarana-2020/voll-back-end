@@ -6,7 +6,8 @@ import ValidateProduct from '../../src/database/middlewares/Products/validatePro
 const ProductRouter = express.Router();
 
 ProductRouter
+  .use(upload.single('image'))
   .use(ValidateProduct.validateProduct)
-  .post('/',upload.single('image'), ProductController.addProduct)
+  .post('/',ProductController.addProduct)
 
   export default ProductRouter;

@@ -9,7 +9,7 @@ export default class ValidateProduct {
    try {
     const { authorization } = req.headers;
     const { name, price } = req.body;
-
+    
     if(!name || !price) {
       return res.status(401).json({ message: 'All fields must be filled' })
     }
