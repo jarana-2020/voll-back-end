@@ -6,6 +6,7 @@ import { ValidateToken } from '../../src/database/middlewares/Token/validateToke
 const UserRouter = express.Router();
 
 UserRouter
+  .put('/', ValidateToken.checkToken, UserController.editUser)
   .get('/', ValidateToken.checkToken, UserController.searchUser)
   .use(ValidateUser.validateLogin)
   .post('/login', UserController.loginUser)
