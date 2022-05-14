@@ -24,7 +24,7 @@ class App {
     this.app.use(accessControl);
     this.app.use(express.json());
     this.app.use(cors());
-    this.app.use(express.static(path.resolve('public')));
+    this.app.use('/images',express.static(path.resolve('public/')));
     this.app.use('/user', UserRouter )
     this.app.use('/products', ProductRouter)
   }
