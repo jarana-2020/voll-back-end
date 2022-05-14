@@ -7,6 +7,7 @@ import { ValidateToken } from '../../src/database/middlewares/Token/validateToke
 const ProductRouter = express.Router();
 
 ProductRouter
+  .get('/', ProductController.getAll)
   .use(upload.single('image'))
   .use(ValidateToken.checkToken)
   .use(ValidateProduct.validateProduct)
