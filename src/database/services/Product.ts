@@ -10,8 +10,14 @@ class ProductService {
       const product = await Product.create({
       name,
       price: Number(cost),
-      urlImage: `http://localhost:3001/public/${urlImage}`
+      urlImage: `http://localhost:3001/images/${urlImage}`
     })
+      return product;
+  }
+
+  static async getAll():Promise<unknown> {
+    
+      const product = await Product.findAll()
       return product;
   }
 }
