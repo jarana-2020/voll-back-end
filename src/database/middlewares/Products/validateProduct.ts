@@ -3,9 +3,9 @@ import { Request, Response, NextFunction } from "express";
 export default class ValidateProduct {
   static validateProduct(req: Request, res: Response, next: NextFunction) {
    try {
-    const { name, price } = req.body;
+    const { name, price, urlImage } = req.body;
     
-    if(!name || !price) {
+    if(!name || !price || !urlImage) {
       return res.status(401).json({ message: 'All fields must be filled' })
     }
 
