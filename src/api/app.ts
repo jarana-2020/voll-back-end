@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import UserRouter from '../../src/routes/UserRoute';
-import ProductRouter from '../../src/routes/ProductRoute';
+import UserRouter from '../routes/UserRoute';
+import ProductRouter from '../routes/ProductRoute';
 import * as path from 'path';
 
 

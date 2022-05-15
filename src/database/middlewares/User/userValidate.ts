@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { UserDataI } from '../../../../src/domain/domain';
-import { emailRegEx } from '../../../../src/helper/helper';
+import { UserDataI } from '../../../domain/domain';
+import { emailRegEx } from '../../../helper/helper';
 
 export default class ValidateUser {
 

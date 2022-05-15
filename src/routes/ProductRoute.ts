@@ -1,8 +1,8 @@
 import * as express from 'express';
-import { upload } from '../../src/helper/upload';
-import ProductController from '../../src/database/controllers/Product';
-import ValidateProduct from '../../src/database/middlewares/Products/validateProduct';
-import { ValidateToken } from '../../src/database/middlewares/Token/validateToken';
+import { upload } from '../helper/upload';
+import ProductController from '../database/controllers/Product';
+import ValidateProduct from '../database/middlewares/Products/validateProduct';
+import { ValidateToken } from '../database/middlewares/Token/validateToken';
 
 const ProductRouter = express.Router();
 

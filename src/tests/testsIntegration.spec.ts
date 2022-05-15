@@ -3,9 +3,7 @@ import { Response } from 'superagent';
 import  sinon from 'sinon';
 import chai from 'chai';
 import User from '../database/models/User';
-import supertest from 'supertest';
 import chaiHttp = require('chai-http');
-
 import { app } from '../api/app';
 import { tokenAdmin, tokenUser, userCreated, userData, userLogin } from './mocks';
 import { UserCreatedI } from '../../src/domain/domain';
