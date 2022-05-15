@@ -1,4 +1,4 @@
-import * as multer from "multer"
+import  multer from "multer"
 
 const storage = multer.diskStorage({
   destination: (_req, _file, callback) => {
