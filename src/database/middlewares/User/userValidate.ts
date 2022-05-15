@@ -31,6 +31,20 @@ export default class ValidateUser {
       return res.status(401).json({ message: 'All fields must be filled'})
     }
 
+    
+
+    next();
+  }
+
+  static validateCoinsAndId (req: Request, res: Response, next: NextFunction) {
+    const { id, coins } = req.body;
+
+    if(!coins || !id) {
+      return res.status(401).json({ message: 'Coins and Id must be filled'})
+    }
+
+    
+
     next();
   }
 }
