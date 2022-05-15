@@ -9,7 +9,7 @@ class ProductService {
     
       const product = await Product.create({
       name,
-      price: Number(cost),
+      price: cost,
       urlImage: `http://localhost:3001/images/${urlImage}`
     })
       return product;
